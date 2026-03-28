@@ -137,213 +137,224 @@
             font-size: 0.85rem;
         }
 
-        .screenshot-placeholder {
+        .menu-path {
             background: #f0e8ed;
-            border: 2px dashed #c9b3c3;
-            border-radius: 8px;
-            padding: 2rem;
-            text-align: center;
-            color: #999;
-            margin: 1rem 0;
+            border-radius: 6px;
+            padding: 0.15rem 0.5rem;
             font-size: 0.9rem;
+            color: #714B67;
+            font-weight: 600;
+            white-space: nowrap;
         }
     </style>
 </head>
 <body>
 
 <div class="header">
-    <h1>Ako si zapisat volno v Odoo</h1>
-    <p>Navod pre zamestnancov Paluan s.r.o.</p>
+    <h1>Ako si zapísať voľno v Odoo</h1>
+    <p>Návod pre zamestnancov Paluan s.r.o.</p>
 </div>
 
 <div class="container">
 
-    <!-- Typy volna -->
+    <!-- Typy voľna -->
     <div class="card">
-        <h2>Typy volneho dna</h2>
+        <h2>Typy voľného dňa</h2>
         <div class="type-grid">
             <div class="type-card highlight">
                 <div class="icon">&#127796;</div>
                 <div class="name">Dovolenka</div>
-                <div class="desc">20 dni rocne (25 dni od 33 rokov). Odpocitava sa zo zostatku.</div>
+                <div class="desc">20 dní ročne (25 dní od 33 rokov). Odpočítava sa zo zostatku.</div>
             </div>
             <div class="type-card">
                 <div class="icon">&#129658;</div>
-                <div class="name">PN (praceneschopnost)</div>
-                <div class="desc">Nemocenske. Bez limitu dni. Treba doklad od lekara.</div>
+                <div class="name">PN (práceneschopnosť)</div>
+                <div class="desc">Nemocenské. Bez limitu dní. Treba doklad od lekára.</div>
             </div>
             <div class="type-card">
                 <div class="icon">&#128260;</div>
-                <div class="name">Nahradne volno</div>
-                <div class="desc">Za pracu cez vikend alebo sviatok. Prideli vam ho veduci.</div>
+                <div class="name">Náhradné voľno</div>
+                <div class="desc">Za prácu cez víkend alebo sviatok. Pridelí vám ho vedúci.</div>
             </div>
             <div class="type-card">
                 <div class="icon">&#128203;</div>
-                <div class="name">Neplatene volno</div>
-                <div class="desc">Volno bez nahrady mzdy. Treba schvalenie.</div>
+                <div class="name">Neplatené voľno</div>
+                <div class="desc">Voľno bez náhrady mzdy. Treba schválenie.</div>
             </div>
         </div>
     </div>
 
-    <!-- Ako podat ziadost -->
+    <!-- Ako podať žiadosť -->
     <div class="card">
-        <h2>Ako podat ziadost o volno</h2>
+        <h2>Ako podať žiadosť o voľno</h2>
 
         <ol class="steps">
             <li>
-                Otvorte <strong>odoo.paluan.sk</strong> a prihlaste sa svojim uctom
+                Otvorte <strong>odoo.paluan.sk</strong> a prihláste sa svojím účtom
             </li>
             <li>
-                V lavom menu kliknite na <strong>Volne dni</strong> (Time Off)
+                V ľavom menu kliknite na <span class="menu-path">Voľné dni</span>
             </li>
             <li>
-                Kliknite na zelene tlacidlo <strong>Nove</strong> (vpravo hore)
+                V hornom menu kliknite na <span class="menu-path">My Time &rarr; Moje voľné dni</span>
             </li>
             <li>
-                Vyplnte formular:
+                Kliknite na zelené tlačidlo <strong>Nové</strong> (vľavo hore)
+            </li>
+            <li>
+                Vyplňte formulár:
                 <ul style="margin-top: 0.5rem; padding-left: 1.2rem;">
-                    <li><strong>Typ volnych dni</strong> &mdash; vyberte z ponuky (Dovolenka, PN, ...)</li>
-                    <li><strong>Datum od</strong> &mdash; prvy den volna</li>
-                    <li><strong>Datum do</strong> &mdash; posledny den volna</li>
-                    <li><strong>Popis</strong> &mdash; dovod (nepovinne, ale odporucame)</li>
+                    <li><strong>Typ voľných dní</strong> &mdash; vyberte z ponuky (Dovolenka, PN, ...)</li>
+                    <li><strong>Dátum</strong> &mdash; prvý deň voľna &rarr; posledný deň voľna</li>
+                    <li><strong>Popis</strong> &mdash; dôvod (nepovinné, ale odporúčame)</li>
                 </ul>
             </li>
             <li>
-                Skontrolujte <strong>pocet dni</strong> &mdash; system automaticky vynecha vikendy a sviatky
+                Skontrolujte <strong>Žiadané (dni / hodiny)</strong> &mdash; systém automaticky vynechá víkendy a sviatky
             </li>
             <li>
-                Kliknite na <strong>Potvrdit</strong> &mdash; ziadost sa odosle vasemu veducemu na schvalenie
+                Kliknite na <strong>Potvrdiť</strong> &mdash; žiadosť sa odošle vášmu vedúcemu na schválenie
             </li>
         </ol>
 
         <div class="tip">
-            <strong>Tip:</strong> Ak potrebujete len pol dna, zaskrtnite moznost <strong>Pol dna</strong> vo formulari.
+            <strong>Tip:</strong> Ak potrebujete len pol dňa, zaškrtnite možnosť <strong>Pol dňa</strong> vo formulári.
         </div>
     </div>
 
-    <!-- Pol dna -->
+    <!-- Pol dňa -->
     <div class="card">
-        <h2>Ako si vziat pol dna</h2>
+        <h2>Ako si vziať pol dňa</h2>
         <ol class="steps">
-            <li>Vytvorte novu ziadost rovnako ako pri celom dni</li>
-            <li>Zaskrtnite <strong>Pol dna</strong></li>
-            <li>Vyberte ci ide o <strong>dopoludnie</strong> alebo <strong>popoludnie</strong></li>
-            <li>Potvrdte ziadost</li>
+            <li>Vytvorte novú žiadosť rovnako ako pri celom dni</li>
+            <li>Zaškrtnite <strong>Pol dňa</strong></li>
+            <li>Vyberte či ide o <strong>dopoludnie</strong> alebo <strong>popoludnie</strong></li>
+            <li>Potvrďte žiadosť</li>
         </ol>
     </div>
 
-    <!-- Navsteva lekara -->
+    <!-- Návšteva lekára -->
     <div class="card">
-        <h2>Navsteva lekara</h2>
-        <p>Ak potrebujete ist k lekarovi pocas pracovneho dna:</p>
+        <h2>Návšteva lekára</h2>
+        <p>Ak potrebujete ísť k lekárovi počas pracovného dňa:</p>
         <ol class="steps">
-            <li>Vytvorte ziadost o volno s typom <strong>PN (praceneschopnost)</strong></li>
-            <li>Zvolte <strong>Pol dna</strong> ak ide len o kratku navstevu</li>
-            <li>Do popisu napisete napr. <em>"Navsteva lekara"</em></li>
-            <li>Potvrdte &mdash; PN nevyzaduje alokaciu, mozete ju pouzit kedykolvek</li>
+            <li>Vytvorte žiadosť o voľno s typom <strong>PN (práceneschopnosť)</strong></li>
+            <li>Zvoľte <strong>Pol dňa</strong> ak ide len o krátku návštevu</li>
+            <li>Do popisu napíšete napr. <em>&bdquo;Návšteva lekára&ldquo;</em></li>
+            <li>Potvrďte &mdash; PN nevyžaduje alokáciu, môžete ju použiť kedykoľvek</li>
         </ol>
         <div class="info">
-            <strong>Poznamka:</strong> Pre dlhodobejsiu PN (viac ako 3 dni) odovzdajte potvrdenie od lekara na HR oddelenie.
+            <strong>Poznámka:</strong> Pre dlhodobejšiu PN (viac ako 3 dni) odovzdajte potvrdenie od lekára na HR oddelenie.
         </div>
     </div>
 
     <!-- Zostatok dovolenky -->
     <div class="card">
-        <h2>Ako zistim kolko dovolenky mi zostava?</h2>
+        <h2>Ako zistím koľko dovolenky mi zostáva?</h2>
         <ol class="steps">
-            <li>Otvorte <strong>Volne dni</strong> v menu</li>
-            <li>Na hlavnej stranke vidite <strong>farebne karticky</strong> s poctom zostavu&shy;jucich dni podla typu</li>
-            <li>Kliknite na karticu <strong>Dovolenka</strong> pre detail &mdash; uvidite kolko dni ste vycer&shy;pali a kolko vam zostava</li>
+            <li>Otvorte <span class="menu-path">Voľné dni &rarr; My Time &rarr; Riadiaci panel</span></li>
+            <li>Na hlavnej stránke vidíte <strong>farebné kartičky</strong> s počtom zostávajúcich dní podľa typu</li>
+            <li>Kliknite na kartičku <strong>Dovolenka</strong> pre detail &mdash; uvidíte koľko dní ste vyčerpali a koľko vám zostáva</li>
         </ol>
         <div class="tip">
-            <strong>Tip:</strong> Ak mate 0 dni a potrebujete dovolenku, kontaktujte svojho veduceho alebo HR.
+            <strong>Tip:</strong> Ak máte 0 dní a potrebujete dovolenku, kontaktujte svojho vedúceho alebo HR.
         </div>
     </div>
 
-    <!-- Stavy ziadosti -->
+    <!-- Moje alokácie -->
     <div class="card">
-        <h2>Stavy ziadosti</h2>
+        <h2>Moje alokácie (pridelené dni)</h2>
+        <p>Ak chcete vidieť koľko dní vám bolo pridelených:</p>
+        <ol class="steps">
+            <li>Otvorte <span class="menu-path">Voľné dni &rarr; My Time &rarr; Moje alokácie</span></li>
+            <li>Uvidíte zoznam pridelených dní podľa typu voľna</li>
+        </ol>
+    </div>
+
+    <!-- Stavy žiadosti -->
+    <div class="card">
+        <h2>Stavy žiadosti</h2>
         <table>
             <tr>
                 <th>Stav</th>
-                <th>Co to znamena</th>
+                <th>Čo to znamená</th>
             </tr>
             <tr>
-                <td><strong>Na schvalenie</strong></td>
-                <td>Ziadost bola odoslana a caka na schvalenie veducim</td>
+                <td><strong>Na schválenie</strong></td>
+                <td>Žiadosť bola odoslaná a čaká na schválenie vedúcim</td>
             </tr>
             <tr>
-                <td><strong>Schvalene</strong></td>
-                <td>Volno bolo schvalene, mate volno</td>
+                <td><strong>Schválené</strong></td>
+                <td>Voľno bolo schválené &mdash; máte voľno</td>
             </tr>
             <tr>
                 <td><strong>Odmietnuté</strong></td>
-                <td>Ziadost bola zamietnuta &mdash; kontaktujte veduceho pre dovod</td>
+                <td>Žiadosť bola zamietnutá &mdash; kontaktujte vedúceho pre dôvod</td>
             </tr>
             <tr>
-                <td><strong>Zrusene</strong></td>
-                <td>Ziadost ste sami zrusili</td>
+                <td><strong>Zrušené</strong></td>
+                <td>Žiadosť ste sami zrušili</td>
             </tr>
         </table>
     </div>
 
     <!-- Sviatky -->
     <div class="card">
-        <h2>Statne sviatky 2026</h2>
-        <p>Tieto dni su automaticky volne a <strong>neodpocitavaju sa z dovolenky</strong>:</p>
+        <h2>Štátne sviatky 2026</h2>
+        <p>Tieto dni sú automaticky voľné a <strong>neodpočítavajú sa z dovolenky</strong>:</p>
         <table>
-            <tr><th>Datum</th><th>Sviatok</th></tr>
-            <tr><td>1. januar</td><td>Den vzniku Slovenskej republiky</td></tr>
-            <tr><td>6. januar</td><td>Zjavenie Pana (Traja krali)</td></tr>
-            <tr><td>3. april</td><td>Velky piatok</td></tr>
-            <tr><td>6. april</td><td>Velkonocny pondelok</td></tr>
-            <tr><td>1. maj</td><td>Sviatok prace</td></tr>
-            <tr><td>8. maj</td><td>Den vitazstva nad fasizmom</td></tr>
-            <tr><td>5. jul</td><td>Sviatok sv. Cyrila a Metoda</td></tr>
-            <tr><td>29. august</td><td>Vyrocie SNP</td></tr>
-            <tr><td>1. september</td><td>Den Ustavy SR</td></tr>
-            <tr><td>15. september</td><td>Sedembolestna Panna Maria</td></tr>
-            <tr><td>1. november</td><td>Sviatok Vsetkych svatych</td></tr>
-            <tr><td>17. november</td><td>Den boja za slobodu a demokraciu</td></tr>
-            <tr><td>24. december</td><td>Stedry den</td></tr>
-            <tr><td>25. december</td><td>Prvy sviatok vianocny</td></tr>
-            <tr><td>26. december</td><td>Druhy sviatok vianocny</td></tr>
+            <tr><th>Dátum</th><th>Sviatok</th></tr>
+            <tr><td>1. január</td><td>Deň vzniku Slovenskej republiky</td></tr>
+            <tr><td>6. január</td><td>Zjavenie Pána (Traja králi)</td></tr>
+            <tr><td>3. apríl</td><td>Veľký piatok</td></tr>
+            <tr><td>6. apríl</td><td>Veľkonočný pondelok</td></tr>
+            <tr><td>1. máj</td><td>Sviatok práce</td></tr>
+            <tr><td>8. máj</td><td>Deň víťazstva nad fašizmom</td></tr>
+            <tr><td>5. júl</td><td>Sviatok sv. Cyrila a Metoda</td></tr>
+            <tr><td>29. august</td><td>Výročie SNP</td></tr>
+            <tr><td>1. september</td><td>Deň Ústavy SR</td></tr>
+            <tr><td>15. september</td><td>Sedembolestná Panna Mária</td></tr>
+            <tr><td>1. november</td><td>Sviatok Všetkých svätých</td></tr>
+            <tr><td>17. november</td><td>Deň boja za slobodu a demokraciu</td></tr>
+            <tr><td>24. december</td><td>Štedrý deň</td></tr>
+            <tr><td>25. december</td><td>Prvý sviatok vianočný</td></tr>
+            <tr><td>26. december</td><td>Druhý sviatok vianočný</td></tr>
         </table>
     </div>
 
-    <!-- Casto kladene otazky -->
+    <!-- Časté otázky -->
     <div class="card">
-        <h2>Caste otazky</h2>
+        <h2>Časté otázky</h2>
 
-        <h3>Mozem zrusit uz odoslanu ziadost?</h3>
-        <p>Ano &mdash; otvorte ziadost a kliknite <strong>Zrusit</strong>. Ak uz bola schvalena, kontaktujte veduceho.</p>
+        <h3>Môžem zrušiť už odoslanú žiadosť?</h3>
+        <p>Áno &mdash; otvorte žiadosť a kliknite <strong>Zrušiť</strong>. Ak už bola schválená, kontaktujte vedúceho.</p>
 
-        <h3>Mozem si vziat dovolenku na zajtra?</h3>
-        <p>Technicky ano, system to dovoli. Ale odporucame oznamit volno aspon 3 dni vopred.</p>
+        <h3>Môžem si vziať dovolenku na zajtra?</h3>
+        <p>Technicky áno, systém to dovolí. Ale odporúčame oznámiť voľno aspoň 3 dni vopred.</p>
 
-        <h3>Co ak mam PN dlhsie ako tyzden?</h3>
-        <p>Vytvorte jednu ziadost na cele obdobie PN. Doklad od lekara odovzdajte na HR.</p>
+        <h3>Čo ak mám PN dlhšie ako týždeň?</h3>
+        <p>Vytvorte jednu žiadosť na celé obdobie PN. Doklad od lekára odovzdajte na HR.</p>
 
-        <h3>Kto schvaluje moju ziadost?</h3>
-        <p>Vas priamy nadriadeny (veduci oddelenia). Ak nema nastaveneho, schvaluje HR.</p>
+        <h3>Kto schvaľuje moju žiadosť?</h3>
+        <p>Váš priamy nadriadený (vedúci oddelenia). Ak nemá nastaveného, schvaľuje HR.</p>
 
-        <h3>Preco vidim 0 dni dovolenky?</h3>
-        <p>Alokaciu dovolenky pridava HR na zaciatku roka. Ak ju nevidite, kontaktujte HR.</p>
+        <h3>Prečo vidím 0 dní dovolenky?</h3>
+        <p>Alokáciu dovolenky pridáva HR na začiatku roka. Ak ju nevidíte, kontaktujte HR.</p>
     </div>
 
     <!-- Priamy odkaz -->
     <div class="card" style="text-align: center;">
-        <h2>Priamy odkaz do systemu</h2>
-        <p>Kliknite pre priame otvorenie modulu Volne dni:</p>
+        <h2>Priamy odkaz do systému</h2>
+        <p>Kliknite pre priame otvorenie modulu Voľné dni:</p>
         <a href="https://odoo.paluan.sk/odoo/time-off" class="link-btn" target="_blank">
-            Otvorit Volne dni v Odoo
+            Otvoriť Voľné dni v Odoo
         </a>
     </div>
 
 </div>
 
 <div class="footer">
-    Paluan s.r.o. &mdash; Interny navod pre zamestnancov &mdash; 2026
+    Paluan s.r.o. &mdash; Interný návod pre zamestnancov &mdash; 2026
 </div>
 
 </body>
