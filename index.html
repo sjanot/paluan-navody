@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paluan - Ako si zapísať voľno</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        .header {
+            background: linear-gradient(135deg, #714B67, #4e3349);
+            color: white;
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+        .header h1 { font-size: 1.8rem; margin-bottom: 0.3rem; }
+        .header p { opacity: 0.85; font-size: 1rem; }
+        .container { max-width: 800px; margin: 0 auto; padding: 1.5rem 1rem; }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        .card h2 {
+            color: #714B67;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #f0e8ed;
+        }
+        .card h3 {
+            color: #555;
+            font-size: 1.05rem;
+            margin: 1.2rem 0 0.5rem;
+        }
+
+        .steps { list-style: none; counter-reset: step; }
+        .steps li {
+            counter-increment: step;
+            padding: 0.8rem 0 0.8rem 3.2rem;
+            position: relative;
+            border-bottom: 1px solid #f5f5f5;
+        }
+        .steps li:last-child { border-bottom: none; }
+        .steps li::before {
+            content: counter(step);
+            position: absolute;
+            left: 0;
+            top: 0.7rem;
+            width: 2.2rem;
+            height: 2.2rem;
+            background: #714B67;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.95rem;
+        }
+        .steps li strong { color: #714B67; }
+
+        .type-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+        @media (max-width: 600px) { .type-grid { grid-template-columns: 1fr; } }
+
+        .type-card {
+            border: 2px solid #f0e8ed;
+            border-radius: 10px;
+            padding: 1rem;
+            text-align: center;
+        }
+        .type-card .icon { font-size: 2rem; margin-bottom: 0.3rem; }
+        .type-card .name { font-weight: 700; color: #714B67; font-size: 1.05rem; }
+        .type-card .desc { font-size: 0.85rem; color: #777; margin-top: 0.3rem; }
+        .type-card.highlight { border-color: #714B67; background: #faf6f9; }
+
+        .tip {
+            background: #fff8e1;
+            border-left: 4px solid #ffc107;
+            padding: 0.8rem 1rem;
+            border-radius: 0 8px 8px 0;
+            margin: 1rem 0;
+            font-size: 0.92rem;
+        }
+        .tip strong { color: #e6a800; }
+
+        .warning {
+            background: #fbe9e7;
+            border-left: 4px solid #e53935;
+            padding: 0.8rem 1rem;
+            border-radius: 0 8px 8px 0;
+            margin: 1rem 0;
+            font-size: 0.92rem;
+        }
+        .warning strong { color: #c62828; }
+
+        .info {
+            background: #e8f5e9;
+            border-left: 4px solid #43a047;
+            padding: 0.8rem 1rem;
+            border-radius: 0 8px 8px 0;
+            margin: 1rem 0;
+            font-size: 0.92rem;
+        }
+        .info strong { color: #2e7d32; }
+
+        .link-btn {
+            display: inline-block;
+            background: #714B67;
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 0.5rem;
+            transition: background 0.2s;
+        }
+        .link-btn:hover { background: #5a3a52; }
+
+        table { width: 100%; border-collapse: collapse; margin: 0.5rem 0; font-size: 0.92rem; }
+        th { background: #714B67; color: white; padding: 0.6rem; text-align: left; }
+        td { padding: 0.5rem 0.6rem; border-bottom: 1px solid #eee; }
+        tr:nth-child(even) { background: #faf6f9; }
+
+        .footer {
+            text-align: center;
+            padding: 2rem 1rem;
+            color: #999;
+            font-size: 0.85rem;
+        }
+
+        .screenshot-placeholder {
+            background: #f0e8ed;
+            border: 2px dashed #c9b3c3;
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            color: #999;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1>Ako si zapisat volno v Odoo</h1>
+    <p>Navod pre zamestnancov Paluan s.r.o.</p>
+</div>
+
+<div class="container">
+
+    <!-- Typy volna -->
+    <div class="card">
+        <h2>Typy volneho dna</h2>
+        <div class="type-grid">
+            <div class="type-card highlight">
+                <div class="icon">&#127796;</div>
+                <div class="name">Dovolenka</div>
+                <div class="desc">20 dni rocne (25 dni od 33 rokov). Odpocitava sa zo zostatku.</div>
+            </div>
+            <div class="type-card">
+                <div class="icon">&#129658;</div>
+                <div class="name">PN (praceneschopnost)</div>
+                <div class="desc">Nemocenske. Bez limitu dni. Treba doklad od lekara.</div>
+            </div>
+            <div class="type-card">
+                <div class="icon">&#128260;</div>
+                <div class="name">Nahradne volno</div>
+                <div class="desc">Za pracu cez vikend alebo sviatok. Prideli vam ho veduci.</div>
+            </div>
+            <div class="type-card">
+                <div class="icon">&#128203;</div>
+                <div class="name">Neplatene volno</div>
+                <div class="desc">Volno bez nahrady mzdy. Treba schvalenie.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ako podat ziadost -->
+    <div class="card">
+        <h2>Ako podat ziadost o volno</h2>
+
+        <ol class="steps">
+            <li>
+                Otvorte <strong>odoo.paluan.sk</strong> a prihlaste sa svojim uctom
+            </li>
+            <li>
+                V lavom menu kliknite na <strong>Volne dni</strong> (Time Off)
+            </li>
+            <li>
+                Kliknite na zelene tlacidlo <strong>Nove</strong> (vpravo hore)
+            </li>
+            <li>
+                Vyplnte formular:
+                <ul style="margin-top: 0.5rem; padding-left: 1.2rem;">
+                    <li><strong>Typ volnych dni</strong> &mdash; vyberte z ponuky (Dovolenka, PN, ...)</li>
+                    <li><strong>Datum od</strong> &mdash; prvy den volna</li>
+                    <li><strong>Datum do</strong> &mdash; posledny den volna</li>
+                    <li><strong>Popis</strong> &mdash; dovod (nepovinne, ale odporucame)</li>
+                </ul>
+            </li>
+            <li>
+                Skontrolujte <strong>pocet dni</strong> &mdash; system automaticky vynecha vikendy a sviatky
+            </li>
+            <li>
+                Kliknite na <strong>Potvrdit</strong> &mdash; ziadost sa odosle vasemu veducemu na schvalenie
+            </li>
+        </ol>
+
+        <div class="tip">
+            <strong>Tip:</strong> Ak potrebujete len pol dna, zaskrtnite moznost <strong>Pol dna</strong> vo formulari.
+        </div>
+    </div>
+
+    <!-- Pol dna -->
+    <div class="card">
+        <h2>Ako si vziat pol dna</h2>
+        <ol class="steps">
+            <li>Vytvorte novu ziadost rovnako ako pri celom dni</li>
+            <li>Zaskrtnite <strong>Pol dna</strong></li>
+            <li>Vyberte ci ide o <strong>dopoludnie</strong> alebo <strong>popoludnie</strong></li>
+            <li>Potvrdte ziadost</li>
+        </ol>
+    </div>
+
+    <!-- Navsteva lekara -->
+    <div class="card">
+        <h2>Navsteva lekara</h2>
+        <p>Ak potrebujete ist k lekarovi pocas pracovneho dna:</p>
+        <ol class="steps">
+            <li>Vytvorte ziadost o volno s typom <strong>PN (praceneschopnost)</strong></li>
+            <li>Zvolte <strong>Pol dna</strong> ak ide len o kratku navstevu</li>
+            <li>Do popisu napisete napr. <em>"Navsteva lekara"</em></li>
+            <li>Potvrdte &mdash; PN nevyzaduje alokaciu, mozete ju pouzit kedykolvek</li>
+        </ol>
+        <div class="info">
+            <strong>Poznamka:</strong> Pre dlhodobejsiu PN (viac ako 3 dni) odovzdajte potvrdenie od lekara na HR oddelenie.
+        </div>
+    </div>
+
+    <!-- Zostatok dovolenky -->
+    <div class="card">
+        <h2>Ako zistim kolko dovolenky mi zostava?</h2>
+        <ol class="steps">
+            <li>Otvorte <strong>Volne dni</strong> v menu</li>
+            <li>Na hlavnej stranke vidite <strong>farebne karticky</strong> s poctom zostavu&shy;jucich dni podla typu</li>
+            <li>Kliknite na karticu <strong>Dovolenka</strong> pre detail &mdash; uvidite kolko dni ste vycer&shy;pali a kolko vam zostava</li>
+        </ol>
+        <div class="tip">
+            <strong>Tip:</strong> Ak mate 0 dni a potrebujete dovolenku, kontaktujte svojho veduceho alebo HR.
+        </div>
+    </div>
+
+    <!-- Stavy ziadosti -->
+    <div class="card">
+        <h2>Stavy ziadosti</h2>
+        <table>
+            <tr>
+                <th>Stav</th>
+                <th>Co to znamena</th>
+            </tr>
+            <tr>
+                <td><strong>Na schvalenie</strong></td>
+                <td>Ziadost bola odoslana a caka na schvalenie veducim</td>
+            </tr>
+            <tr>
+                <td><strong>Schvalene</strong></td>
+                <td>Volno bolo schvalene, mate volno</td>
+            </tr>
+            <tr>
+                <td><strong>Odmietnuté</strong></td>
+                <td>Ziadost bola zamietnuta &mdash; kontaktujte veduceho pre dovod</td>
+            </tr>
+            <tr>
+                <td><strong>Zrusene</strong></td>
+                <td>Ziadost ste sami zrusili</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- Sviatky -->
+    <div class="card">
+        <h2>Statne sviatky 2026</h2>
+        <p>Tieto dni su automaticky volne a <strong>neodpocitavaju sa z dovolenky</strong>:</p>
+        <table>
+            <tr><th>Datum</th><th>Sviatok</th></tr>
+            <tr><td>1. januar</td><td>Den vzniku Slovenskej republiky</td></tr>
+            <tr><td>6. januar</td><td>Zjavenie Pana (Traja krali)</td></tr>
+            <tr><td>3. april</td><td>Velky piatok</td></tr>
+            <tr><td>6. april</td><td>Velkonocny pondelok</td></tr>
+            <tr><td>1. maj</td><td>Sviatok prace</td></tr>
+            <tr><td>8. maj</td><td>Den vitazstva nad fasizmom</td></tr>
+            <tr><td>5. jul</td><td>Sviatok sv. Cyrila a Metoda</td></tr>
+            <tr><td>29. august</td><td>Vyrocie SNP</td></tr>
+            <tr><td>1. september</td><td>Den Ustavy SR</td></tr>
+            <tr><td>15. september</td><td>Sedembolestna Panna Maria</td></tr>
+            <tr><td>1. november</td><td>Sviatok Vsetkych svatych</td></tr>
+            <tr><td>17. november</td><td>Den boja za slobodu a demokraciu</td></tr>
+            <tr><td>24. december</td><td>Stedry den</td></tr>
+            <tr><td>25. december</td><td>Prvy sviatok vianocny</td></tr>
+            <tr><td>26. december</td><td>Druhy sviatok vianocny</td></tr>
+        </table>
+    </div>
+
+    <!-- Casto kladene otazky -->
+    <div class="card">
+        <h2>Caste otazky</h2>
+
+        <h3>Mozem zrusit uz odoslanu ziadost?</h3>
+        <p>Ano &mdash; otvorte ziadost a kliknite <strong>Zrusit</strong>. Ak uz bola schvalena, kontaktujte veduceho.</p>
+
+        <h3>Mozem si vziat dovolenku na zajtra?</h3>
+        <p>Technicky ano, system to dovoli. Ale odporucame oznamit volno aspon 3 dni vopred.</p>
+
+        <h3>Co ak mam PN dlhsie ako tyzden?</h3>
+        <p>Vytvorte jednu ziadost na cele obdobie PN. Doklad od lekara odovzdajte na HR.</p>
+
+        <h3>Kto schvaluje moju ziadost?</h3>
+        <p>Vas priamy nadriadeny (veduci oddelenia). Ak nema nastaveneho, schvaluje HR.</p>
+
+        <h3>Preco vidim 0 dni dovolenky?</h3>
+        <p>Alokaciu dovolenky pridava HR na zaciatku roka. Ak ju nevidite, kontaktujte HR.</p>
+    </div>
+
+    <!-- Priamy odkaz -->
+    <div class="card" style="text-align: center;">
+        <h2>Priamy odkaz do systemu</h2>
+        <p>Kliknite pre priame otvorenie modulu Volne dni:</p>
+        <a href="https://odoo.paluan.sk/odoo/time-off" class="link-btn" target="_blank">
+            Otvorit Volne dni v Odoo
+        </a>
+    </div>
+
+</div>
+
+<div class="footer">
+    Paluan s.r.o. &mdash; Interny navod pre zamestnancov &mdash; 2026
+</div>
+
+</body>
+</html>
